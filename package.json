@@ -10,6 +10,6 @@
   "keywords": [],
   "description": "",
   "dependencies": {
-    "cypress": "^14.0.0"
+    "cypress": "^14.5.4"
   }
 }

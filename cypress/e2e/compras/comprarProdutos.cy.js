@@ -1,9 +1,10 @@
 /// <reference types="Cypress" />
+
 import LoginPage from '../support/pages/LoginPage';
 import ProductsPage from '../support/pages/ProductsPage';
 import CartPage from '../support/pages/CartPage';
 import CheckoutPage from '../support/pages/CheckoutPage';
-import SuccessPage from '../support/pages/SuccessPage';
+import SuccessPage from '../support/pages1/SuccessPage';
 
 describe('Teste E2E - Realizando a compra de produtos com sucesso', () => {
   it('Fluxo da compra de produtos', () => {
