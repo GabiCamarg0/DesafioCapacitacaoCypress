@@ -1,0 +1,31 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1755700319890' stop='1755700324506'>
+    <name>Teste funcional de login</name>
+    <title>Teste funcional de login</title>
+    <test-cases>
+        <test-case start='1755700319912' status='passed' stop='1755700322462'>
+            <name>Deve realizar o login com sucesso</name>
+            <title>Deve realizar o login com sucesso</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+        <test-case start='1755700322485' status='passed' stop='1755700323713'>
+            <name>Validando login com nome de usuário incorreto</name>
+            <title>Validando login com nome de usuário incorreto</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+        <test-case start='1755700323727' status='passed' stop='1755700324505'>
+            <name>Validar login com senha incorreta</name>
+            <title>Validar login com senha incorreta</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>
