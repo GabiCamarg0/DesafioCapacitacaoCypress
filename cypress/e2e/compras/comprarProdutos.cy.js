@@ -5,7 +5,7 @@ import CheckoutPage from "../support/pages/CheckoutPage";
 import LoginPage from "../support/pages/LoginPage";
 import ProductsPage from "../support/pages/ProductsPage";
 
-describe('Teste E2E - Realizando a compra de produtos com sucesso', () => {
+describe('Teste E2E - Compra de produtos com sucesso', () => {
 
   before(() => {
     cy.log('Iniciando Testes E2E de compra de produtos');
