@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:run": "npx cypress run --browser chrome --headed --spec cypress/e2e/compras --reporter mocha-allure-reporter",
+    "cy:run:all": "npx cypress run --browser chrome --headed --reporter mocha-allure-reporter",
+    "report:allure": "allure generate allure-results --clean -o allure-report && allure open allure-report",
+    "run:full": "npm run clean:results && npm run cy:run:all && npm run report:allure"
   },
   "author": "Gabriela Camargo",
   "license": "ISC",
@@ -11,5 +15,10 @@
   "description": "",
   "dependencies": {
     "cypress": "^14.0.0"
+  },
+  "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.41.2",
+    "allure-commandline": "^2.34.1",
+    "mocha-allure-reporter": "^1.4.0"
   }
 }
