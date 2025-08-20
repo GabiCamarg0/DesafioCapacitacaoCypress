@@ -1,30 +1,53 @@
 /// <reference types="Cypress" />
 
-// Definindo o comando customizado para login
+// Comando customizado de login
 Cypress.Commands.add('login_teste', (username, password) => {
-  cy.visit('https://www.saucedemo.com/');  // URL da página de login
-  cy.get('[data-test="username"]').type(username); // Campo de usuário
-  cy.get('[data-test="password"]').type(password); // Campo de senha
-  cy.get('[data-test="login-button"]').click(); // Clica no botão de login
+  cy.visit('https://www.saucedemo.com/');
+  cy.get('[data-test="username"]').type(username);
+  cy.get('[data-test="password"]').type(password);
+  cy.get('[data-test="login-button"]').click();
 });
 
 describe('Teste funcional de login', () => {
-    
-    // Teste de login com credenciais válidas
-    it('Deve realizar o login com sucesso', () => {
-        cy.login_teste('standard_user', 'secret_sauce'); // Usando as credenciais válidas
-        cy.get('.title').should('contain', 'Products'); // Verifica se a página de produtos é carregada
-    });
+  
+  before(() => {
+    cy.log(' Iniciando suite de testes de login');
+  });
 
-    // Teste de login com nome de usuário incorreto
-    it('Validando login incorreto', () => {
-        cy.login_teste('incorreto', 'secret_sauce');
-        cy.get('[data-test="error"]').should('contain', 'Epic sadface: Username and password do not match any user in this service');
-    });
+  beforeEach(() => {
+    cy.log(' Preparando ambiente de teste');
+    cy.clearCookies();
+    cy.clearLocalStorage();
+  });
 
-    // Teste de login com senha incorreta
-    it('Validar senha incorreta', () => {
-        cy.login_teste('standard_user', 'senha_errada');
-        cy.get('[data-test="error"]').should('contain', 'Epic sadface: Username and password do not match any user in this service');
-    });
+  afterEach(() => {
+    cy.log(' Teste finalizado - limpando estado');
+  });
+
+  after(() => {
+    cy.log(' Finalizando a suíte de testes de login');
+  });
+
+  // Teste com credenciais válidas
+  it('Deve realizar o login com sucesso', () => {
+    cy.login_teste('standard_user', 'secret_sauce');
+    cy.url().should('include', '/inventory.html');
+    cy.get('.title').should('contain', 'Products');
+  });
+
+  // Teste com usuário incorreto
+  it('Validando login com nome de usuário incorreto', () => {
+    cy.login_teste('incorreto', 'secret_sauce');
+    cy.get('[data-test="error"]')
+      .should('be.visible')
+      .and('contain', 'Epic sadface: Username and password do not match any user in this service');
+  });
+
+  // Teste com senha incorreta
+  it('Validar login com senha incorreta', () => {
+    cy.login_teste('standard_user', 'senha_errada');
+    cy.get('[data-test="error"]')
+      .should('be.visible')
+      .and('contain', 'Epic sadface: Username and password do not match any user in this service');
+  });
 });
